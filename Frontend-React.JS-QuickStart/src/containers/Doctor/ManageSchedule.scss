@@ -1,0 +1,40 @@
+.manage-schedule-container {
+    .m-s-title {
+        text-transform: uppercase;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .pick-hour-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin: 20px 0;
+
+        .item-schedule {
+            border: 1px solid red;
+            width: fit-content;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                color: yellow;
+                background-color: red;
+                border: 1px solid red;
+            }
+
+            &.active {
+                color: yellow;
+                background-color: red;
+                border: 1px solid red;
+            }
+        }
+
+
+    }
+}

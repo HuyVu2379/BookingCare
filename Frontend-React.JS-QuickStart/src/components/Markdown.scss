@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+  /* chiều cao toàn màn hình */
+}
+
+.editor,
+.preview {
+  width: 50%;
+  /* mỗi phần chiếm 50% chiều rộng */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.editor {
+  border-right: 1px solid #ccc;
+  /* đường chia ngăn cách giữa editor và preview */
+}
+
+.preview {
+  padding-left: 20px;
+}

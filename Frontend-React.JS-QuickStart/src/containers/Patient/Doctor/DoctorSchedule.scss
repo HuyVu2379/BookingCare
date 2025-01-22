@@ -1,0 +1,38 @@
+.doctor-schedule-container {
+    .all-schedule {
+        .schedule {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            .text-schedule {
+                font-size: 25px;
+            }
+
+            .fa-calendar-alt {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .all-available-time {
+        padding: 20px 0;
+
+
+        .timeline {
+            width: 150px;
+            height: 35px;
+            background-color: yellow;
+            font-weight: 500;
+            border: none;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: rgb(14, 57, 230);
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.doctor-position-name {
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+
+    &:hover {
+        color: #37e7f7;
+    }
+}
+
+.doctor-name {
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+        color: #37e7f7;
+    }
+}
+
+.section-outStandingDoctor-body {
+    cursor: pointer;
+    border: 1px solid #717171;
+    margin: 0 10px;
+    justify-content: center;
+}

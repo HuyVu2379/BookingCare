@@ -1,0 +1,17 @@
+.content-left {
+    width: 60%;
+
+    .section-about-header {
+        padding: 20px 10px;
+        font-size: 25px;
+        font-weight: 600;
+    }
+}
+
+.content-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    font-size: medium;
+}
