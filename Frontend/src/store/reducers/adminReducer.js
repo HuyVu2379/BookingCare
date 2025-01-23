@@ -10,11 +10,12 @@ const initialState = {
     topDoctors: [],
     allDoctors: [],
     detailDoctor: {},
+    doctorInfor: {},
     schedule: [],
     schedules: [],
     priceList: [],
     paymentList: [],
-    provinceList: []
+    provinceList: [],
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -129,6 +130,13 @@ const adminReducer = (state = initialState, action) => {
             return { ...state }
         case actionTypes.GET_PROVINCE_FAILED:
             state.provinceList = [];
+            return { ...state }
+
+        case actionTypes.GET_DOCTOR_INFOR_SUCCESS:
+            state.doctorInfor = action.doctorInfor;
+            return { ...state }
+        case actionTypes.GET_DOCTOR_INFOR_FAILED:
+            state.doctorInfor = {};
             return { ...state }
         default:
             return state;

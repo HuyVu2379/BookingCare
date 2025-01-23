@@ -47,6 +47,9 @@ const getDoctorScheduleService = (doctorId, date) => {
     });
 };
 
+const getDoctorInfor = (id) => {
+    return axios.get(`/api/get-doctor-infor/${id}`);
+};
 export {
     handleLoginApi,
     getAllUsers,
@@ -59,5 +62,6 @@ export {
     saveDetailDoctor,
     getDetailInforDoctor,
     saveBulkSchedule,
-    getDoctorScheduleService
+    getDoctorScheduleService,
+    getDoctorInfor
 };

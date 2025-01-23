@@ -7,23 +7,34 @@ class DoctorExtraInfor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showDetails: false
+            showDetails: false,
+            doctorInfor: {}
         };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        let id = this.props.doctorId;
+        if (id) {
+            await this.props.getDoctorInfor(id);
+        }
     }
 
     componentDidUpdate(prevProps) {
+        if (this.props.doctorInfor !== prevProps.doctorInfor) {
+            this.setState({
+                doctorInfor: this.props.doctorInfor
+            })
+        }
     }
 
     render() {
+        console.log("check state: ", this.state.doctorInfor);
         return (
             <div className='container-infor'>
                 <div className="box1">
                     <div className="h4 fw-bold">ĐỊA CHỈ KHÁM</div>
-                    <div>Phòng khám chuyên khoa da liễu</div>
-                    <div>207 Phố Huế - Hai Bà Trưng - Hà Nội</div>
+                    <div>{this.state.doctorInfor.nameClinic}</div>
+                    <div>{this.state.doctorInfor.addressClinic}</div>
                 </div>
                 <div className="box3" style={{ display: this.state.showDetails ? 'block' : 'none' }}>
                     <div className='child1'>
@@ -40,7 +51,7 @@ class DoctorExtraInfor extends Component {
                     </div>
                 </div>
                 <div className="box2 d-flex gap-4">
-                    <div>{this.state.showDetails ? "" : "Giá khám: 250.000 VND"}</div>
+                    {this.state.showDetails ? "" : <span>Giá khám: 250.000 VND</span>}
                     <button onClick={() => this.setState({ showDetails: !this.state.showDetails })} className="view-detail">{this.state.showDetails ? "Ẩn bảng giá" : "Xem chi tiết"}</button>
                 </div>
             </div>
@@ -50,12 +61,14 @@ class DoctorExtraInfor extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        doctorInfor: state.admin.doctorInfor
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getDoctorInfor: (id) => dispatch(actions.fetchDoctorInfor(id))
     }
 };
 

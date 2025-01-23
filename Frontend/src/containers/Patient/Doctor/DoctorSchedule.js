@@ -57,8 +57,6 @@ class DoctorSchedule extends Component {
         if (doctorId) {
             await this.props.getDoctorSchedule(doctorId, date);
             let scheduleOfDoctor = this.props.scheduleOfDoctor.schedules;
-            console.log("Check schedule of doctor: ", scheduleOfDoctor);
-
             for (let index = 0; index < scheduleOfDoctor.length; index++) {
                 const filteredSchedules = schedules.filter(item => item.keyMap === scheduleOfDoctor[index].timeType);
                 schedule.push(...filteredSchedules);
@@ -97,7 +95,6 @@ class DoctorSchedule extends Component {
 
 
     render() {
-        console.log("check current date: ", this.state.schedules);
         const customStyles = {
             control: (provided) => ({
                 ...provided,

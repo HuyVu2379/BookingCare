@@ -38,8 +38,6 @@ class DetailDoctor extends Component {
     render() {
         const { detailDoctor, markdown } = this.state;
         const { language } = this.props;
-        const doctorData = detailDoctor.doctorData || {};
-        console.log("check user detail: ", doctorData);
 
         return (
             <Fragment>
@@ -64,7 +62,9 @@ class DetailDoctor extends Component {
                             {this.state.detailDoctor.id && <DoctorSchedule doctorId={this.state.detailDoctor.id} />}
                         </div>
                         <div className="content-right">
-                            <DoctorExtraInfor />
+                            {this.state.detailDoctor.id && (
+                                <DoctorExtraInfor doctorId={this.state.detailDoctor.id} />
+                            )}
                         </div>
                     </div>
                     <div className="detail-infor-doctor ">

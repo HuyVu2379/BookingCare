@@ -149,14 +149,14 @@ let getDetailInforDoctorService = (doctorId) => {
                 include: [
                     { model: db.Markdown, as: 'markdown' },
                     { model: db.Allcode, as: 'positionData' },
-                    {
-                        model: db.Doctor_Infor, as: "doctorData",
-                        include: [
-                            { model: db.Allcode, as: 'priceData' },
-                            { model: db.Allcode, as: 'paymentData' },
-                            { model: db.Allcode, as: 'provinceData' },
-                        ]
-                    }
+                    // {
+                    //     model: db.Doctor_Infor, as: "doctorData",
+                    //     include: [
+                    //         { model: db.Allcode, as: 'priceData' },
+                    //         { model: db.Allcode, as: 'paymentData' },
+                    //         { model: db.Allcode, as: 'provinceData' },
+                    //     ]
+                    // }
                 ],
                 raw: false
             })
@@ -244,11 +244,36 @@ let getDoctorScheduleService = (doctorId, date) => {
         }
     })
 }
+
+let getDoctorInforService = (doctorId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let doctorInfor = await db.Doctor_Infor.findOne({
+                where: {
+                    doctorId: doctorId
+                },
+                raw: false,
+                include: [
+                    { model: db.Allcode, as: 'priceData' },
+                    { model: db.Allcode, as: 'paymentData' },
+                    { model: db.Allcode, as: 'provinceData' },
+                ]
+            })
+            resolve({
+                errCode: 0,
+                data: doctorInfor
+            })
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getALlDoctors: getALlDoctors,
     saveDetailInforDoctor: saveDetailInforDoctor,
     getDetailInforDoctorService: getDetailInforDoctorService,
     bulkCreateScheduleService: bulkCreateScheduleService,
-    getDoctorScheduleService: getDoctorScheduleService
+    getDoctorScheduleService: getDoctorScheduleService,
+    getDoctorInforService: getDoctorInforService
 }
