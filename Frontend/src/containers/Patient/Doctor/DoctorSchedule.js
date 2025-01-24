@@ -7,6 +7,7 @@ import { LANGUAGES } from '../../../utils/constant';
 import 'moment/locale/vi';
 import * as actions from "../../../store/actions";
 import { FormattedMessage } from 'react-intl';
+import BookingModal from './BookingModal';
 class DoctorSchedule extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +15,8 @@ class DoctorSchedule extends Component {
             allDays: [],
             schedules: [],
             selectedDate: "",
-            scheduleOfDay: []
+            scheduleOfDay: [],
+            openModal: false
         };
     }
 
@@ -92,7 +94,16 @@ class DoctorSchedule extends Component {
             }
         }
     }
+    toggleFromSchedule = () => {
+        this.setState({
+            openModal: !this.state.openModal,
+        });
+    };
 
+
+    handleBooking = (data) => {
+        this.toggleFromSchedule()
+    }
 
     render() {
         const customStyles = {
@@ -153,13 +164,27 @@ class DoctorSchedule extends Component {
                         this.state.schedules && this.state.schedules.length > 0 ?
                             this.state.schedules.map((item) => {
                                 return (
-                                    <button className='timeline'>{language === LANGUAGES.EN ? item.valueEn : item.valueVi}</button>
+                                    <button
+                                        className='timeline'
+                                        onClick={() => this.handleBooking()}
+                                    >
+                                        {language === LANGUAGES.EN ? item.valueEn : item.valueVi}
+                                    </button>
                                 )
                             })
                             :
                             <div><FormattedMessage id="patient.detail-doctor.no-schedule" /></div>
                     }
                 </div>
+                <div className="booking-free">
+                    <FormattedMessage id="patient.detail-doctor.booking-free" /> <i class="fas fa-hand-point-up"></i>
+                </div>
+                <BookingModal
+                    isOpen={this.state.openModal}
+                    bookingSchedule={this.handleBooking}
+                    toggleFromSchedule={this.toggleFromSchedule} // Truyền hàm toggle từ cha
+                />
+
             </div>
         );
     }

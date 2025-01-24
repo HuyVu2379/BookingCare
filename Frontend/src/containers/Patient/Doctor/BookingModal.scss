@@ -1,0 +1,73 @@
+.modal-patient-container {
+    .modal-header {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        padding: 1.5rem 2rem;
+
+        .modal-user-body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            .input-container {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 calc(50% - 1rem); // 50% chiều rộng, có khoảng cách giữa các ô input
+                min-width: 250px;
+
+                label {
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                    color: #495057;
+                }
+
+                input,
+                select {
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                    padding: 0.5rem;
+                    font-size: 1rem;
+                    color: #495057;
+
+                    &:focus {
+                        border-color: #007bff;
+                        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                    }
+                }
+            }
+
+            .max-width-input {
+                flex: 1 1 100%; // Dòng riêng biệt
+            }
+        }
+    }
+
+    .modal-footer {
+        justify-content: center;
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+
+            &:hover {
+                background-color: #0056b3;
+                border-color: #004085;
+            }
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+
+            &:hover {
+                background-color: #5a6268;
+                border-color: #4e555b;
+            }
+        }
+    }
+}

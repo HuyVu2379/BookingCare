@@ -74,7 +74,16 @@
     "patient": {
         "detail-doctor": {
             "schedule": "Schedule",
-            "no-schedule": "No appointments scheduled today !"
+            "no-schedule": "No appointments scheduled today !",
+            "booking-free": "Schedule a free medical examination"
+        },
+        "doctor-infor": {
+            "text-price": "Priority for examination before booking through BookingCare, the examination price for foreigners is ",
+            "text-payment": "Patients can pay the cost with ",
+            "price-value": "Examination price",
+            "view-detail": "View detail",
+            "hide-detail": "Hide price list",
+            "examination-address": "Examination address"
         }
     },
     "admin": {

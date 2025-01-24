@@ -74,7 +74,16 @@
     "patient": {
         "detail-doctor": {
             "schedule": "Lịch khám",
-            "no-schedule": "Không có lịch hẹn trong ngày hôm nay !"
+            "no-schedule": "Không có lịch hẹn trong ngày hôm nay !",
+            "booking-free": "Đặt lịch khám miễn phí"
+        },
+        "doctor-infor": {
+            "text-price": "Được ưu tiên khám trước khi đặt khám qua BookingCare giá khám cho người nước ngoài là ",
+            "text-payment": "Người bệnh có thể thanh toán chi phí bằng ",
+            "price-value": "Giá khám",
+            "view-detail": "Xem chi tiết",
+            "hide-detail": "Ẩn bảng giá",
+            "examination-address": "Địa chỉ khám"
         }
     },
     "admin": {

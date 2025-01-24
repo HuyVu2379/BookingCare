@@ -6,12 +6,14 @@ import "./DetailDoctor.scss";
 import { LANGUAGES } from '../../../utils/constant';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtraInfor from './DoctorExtraInfor';
+import Booking from './BookingModal';
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
         this.state = {
             detailDoctor: {},
-            markdown: {}
+            markdown: {},
+            isShowBooking: false
         };
     }
 
