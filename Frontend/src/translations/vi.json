@@ -84,6 +84,19 @@
             "view-detail": "Xem chi tiết",
             "hide-detail": "Ẩn bảng giá",
             "examination-address": "Địa chỉ khám"
+        },
+        "profile-doctor": {
+            "title-modal": "Đặt lịch khám bệnh",
+            "examination": "Ca khám",
+            "price-value": "Giá khám",
+            "full-name": "Họ và tên",
+            "phone-number": "Số điện thoại",
+            "email": "Email",
+            "gender": "Giới tính",
+            "address": "Địa chỉ",
+            "date-of-birth": "Ngày sinh",
+            "btn-booking": "Đặt hẹn",
+            "btn-close": "Đóng"
         }
     },
     "admin": {

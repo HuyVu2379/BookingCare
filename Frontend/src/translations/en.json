@@ -84,6 +84,19 @@
             "view-detail": "View detail",
             "hide-detail": "Hide price list",
             "examination-address": "Examination address"
+        },
+        "profile-doctor": {
+            "title-modal": "Schedule a medical examination",
+            "examination": "Examination",
+            "price-value": "Examination price",
+            "full-name": "Full name",
+            "phone-number": "Phone number",
+            "email": "Email",
+            "gender": "Gender",
+            "address": "Address",
+            "date-of-birth": "Date of birth",
+            "btn-booking": "Booking appointment",
+            "btn-close": "Close"
         }
     },
     "admin": {

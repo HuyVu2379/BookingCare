@@ -4,6 +4,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from '../../../utils';
 import * as actions from "../../../store/actions";
 import { connect } from 'react-redux';
+import ProfileDoctor from './ProfileDoctor';
+import { FormattedMessage } from 'react-intl';
 class BookingModal extends Component {
     constructor(props) {
         super(props);
@@ -74,13 +76,17 @@ class BookingModal extends Component {
                 size="lg"
                 centered
             >
-
-                <ModalHeader className='d-flex justify-content-between' toggle={this.props.toggleFromSchedule}>Đặt lịch khám bệnh</ModalHeader>
+                <ModalHeader className='d-flex justify-content-between' toggle={this.props.toggleFromSchedule}><FormattedMessage id='patient.profile-doctor.title-modal' /></ModalHeader>
+                <ProfileDoctor
+                    doctorId={this.props.doctorId}
+                    selectedSchedule={this.props.selectedSchedule}
+                    selectedDate={this.props.selectedDate}
+                />
                 <ModalBody>
                     <div className="modal-user-body">
                         {/* Full Name */}
                         <div className="input-container">
-                            <label>Họ tên</label>
+                            <label><FormattedMessage id='patient.profile-doctor.full-name' /></label>
                             <input
                                 type="text"
                                 name="fullName"
@@ -91,7 +97,7 @@ class BookingModal extends Component {
 
                         {/* Phone Number */}
                         <div className="input-container">
-                            <label>Phone Number</label>
+                            <label><FormattedMessage id='patient.profile-doctor.phone-number' /></label>
                             <input
                                 type="text"
                                 name="phoneNumber"
@@ -102,7 +108,7 @@ class BookingModal extends Component {
 
                         {/* Email */}
                         <div className="input-container">
-                            <label>Email</label>
+                            <label><FormattedMessage id='patient.profile-doctor.email' /></label>
                             <input
                                 type="email"
                                 name="email"
@@ -110,21 +116,9 @@ class BookingModal extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-
-                        {/* Address */}
-                        <div className="input-container">
-                            <label>Address</label>
-                            <input
-                                type="text"
-                                name="address"
-                                value={address}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-
                         {/* Gender */}
-                        <div className="input-container max-width-input">
-                            <label>Gender</label>
+                        <div className="input-container">
+                            <label><FormattedMessage id='patient.profile-doctor.gender' /></label>
                             <select
                                 name="gender"
                                 value={gender}
@@ -137,10 +131,21 @@ class BookingModal extends Component {
                                 })}
                             </select>
                         </div>
+                        {/* Address */}
+                        <div className="input-container max-width-input">
+                            <label><FormattedMessage id='patient.profile-doctor.address' /></label>
+                            <input
+                                type="text"
+                                name="address"
+                                value={address}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+
 
                         {/* Date of Birth */}
                         <div className="input-container max-width-input">
-                            <label>Date of Birth</label>
+                            <label><FormattedMessage id='patient.profile-doctor.date-of-birth' /></label>
                             <input
                                 type="date"
                                 name="dateOfBirth"
@@ -157,7 +162,7 @@ class BookingModal extends Component {
                         className='px-3'
                         onClick={this.handleSubmit}
                     >
-                        Booking Appointment
+                        <FormattedMessage id='patient.profile-doctor.btn-booking' />
                     </Button>
                     {/* Close button */}
                     <Button
@@ -165,7 +170,7 @@ class BookingModal extends Component {
                         className='px-3'
                         onClick={this.props.toggleFromSchedule}
                     >
-                        Close
+                        <FormattedMessage id='patient.profile-doctor.btn-close' />
                     </Button>
                 </ModalFooter>
             </Modal>

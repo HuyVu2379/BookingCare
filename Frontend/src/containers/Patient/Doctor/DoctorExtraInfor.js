@@ -30,7 +30,7 @@ class DoctorExtraInfor extends Component {
     }
 
     render() {
-        console.log("check state: ", this.state.doctorInfor);
+        // console.log("check state: ", this.state.doctorInfor);
 
         let { priceData } = this.state.doctorInfor || {};
         let { paymentData } = this.state.doctorInfor || {};

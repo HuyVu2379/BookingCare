@@ -16,6 +16,7 @@ const initialState = {
     priceList: [],
     paymentList: [],
     provinceList: [],
+    profileDoctor: {}
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -137,6 +138,13 @@ const adminReducer = (state = initialState, action) => {
             return { ...state }
         case actionTypes.GET_DOCTOR_INFOR_FAILED:
             state.doctorInfor = {};
+            return { ...state }
+
+        case actionTypes.GET_PROFILE_DOCTOR_SUCCESS:
+            state.profileDoctor = action.doctorProfile;
+            return { ...state }
+        case actionTypes.GET_PROFILE_DOCTOR_FAILED:
+            state.profileDoctor = {};
             return { ...state }
         default:
             return state;

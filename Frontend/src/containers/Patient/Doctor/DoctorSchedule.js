@@ -16,7 +16,8 @@ class DoctorSchedule extends Component {
             schedules: [],
             selectedDate: "",
             scheduleOfDay: [],
-            openModal: false
+            openModal: false,
+            selectedSchedule: {},
         };
     }
 
@@ -92,6 +93,11 @@ class DoctorSchedule extends Component {
             if (JSON.stringify(allDays) !== JSON.stringify(this.state.allDays)) {
                 this.setState({ allDays });
             }
+            if (prevProps.profileDoctor !== this.props.profileDoctor) {
+                this.setState({
+                    profileDoctor: this.props.profileDoctor
+                })
+            }
         }
     }
     toggleFromSchedule = () => {
@@ -102,6 +108,9 @@ class DoctorSchedule extends Component {
 
 
     handleBooking = (data) => {
+        this.setState({
+            selectedSchedule: data
+        })
         this.toggleFromSchedule()
     }
 
@@ -166,7 +175,7 @@ class DoctorSchedule extends Component {
                                 return (
                                     <button
                                         className='timeline'
-                                        onClick={() => this.handleBooking()}
+                                        onClick={() => this.handleBooking(item)}
                                     >
                                         {language === LANGUAGES.EN ? item.valueEn : item.valueVi}
                                     </button>
@@ -181,7 +190,10 @@ class DoctorSchedule extends Component {
                 </div>
                 <BookingModal
                     isOpen={this.state.openModal}
+                    doctorId={this.props.doctorId}
                     bookingSchedule={this.handleBooking}
+                    selectedSchedule={this.state.selectedSchedule}
+                    selectedDate={this.state.selectedDate}
                     toggleFromSchedule={this.toggleFromSchedule} // Truyền hàm toggle từ cha
                 />
 
@@ -195,13 +207,14 @@ const mapStateToProps = (state) => {
         language: state.app.language,
         detailDoctorFromReducer: state.admin.detailDoctor,
         scheduleOfDoctor: state.admin.schedules,
-        schedule: state.admin.schedule
+        schedule: state.admin.schedule,
     }
 };
 
 const mapDispatchToProps = (dispatch) => ({
     getDoctorSchedule: (doctorId, date) => dispatch(actions.getDoctorSchedule(doctorId, date)),
     getSchedule: () => dispatch(actions.fetchTimeSchedule()),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorSchedule);

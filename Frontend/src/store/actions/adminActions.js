@@ -3,7 +3,7 @@ import {
     getAllCodeService, createNewUserService, getAllUsers,
     deleteUserService, editUserService, getTopDoctorHomeService,
     getAllDoctors, saveDetailDoctor, getDetailInforDoctor, saveBulkSchedule,
-    getDoctorScheduleService, getDoctorInfor
+    getDoctorScheduleService, getDoctorInfor, getProfileDoctor
 } from '../../services/userService'
 import { toast } from "react-toastify"
 export const fetchGenderStart = () => {
@@ -464,6 +464,34 @@ export const fetchDoctorInfor = (id) => {
             console.log("check error: ", error);
             dispatch({
                 type: actionTypes.GET_DOCTOR_INFOR_FAILED,
+            })
+        }
+    }
+}
+
+export const fetchProfileDoctor = (id) => {
+    return async (dispatch, getState) => {
+        console.log("check id from admin action: ", id);
+
+        try {
+            let res = await getProfileDoctor(id);
+            console.log("check data from admin action: ", res);
+
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.GET_PROFILE_DOCTOR_SUCCESS,
+                    doctorProfile: res.data
+                })
+            }
+            else {
+                dispatch({
+                    type: actionTypes.GET_PROFILE_DOCTOR_FAILED
+                })
+            }
+        } catch (error) {
+            console.log("check error: ", error);
+            dispatch({
+                type: actionTypes.GET_PROFILE_DOCTOR_FAILED,
             })
         }
     }

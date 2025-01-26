@@ -2,7 +2,7 @@ import { where } from "sequelize";
 import db from "../models";
 import { resolve } from "path";
 require('dotenv').config();
-import _, { reject } from 'lodash'
+import _, { includes, reject } from 'lodash'
 const MAX_NUMBER_SCHEDULE = parseInt(process.env.MAX_NUMBER_SCHEDULE, 10);
 let getTopDoctorHome = (limitInput) => {
     return new Promise(async (resolve, reject) => {
@@ -268,6 +268,35 @@ let getDoctorInforService = (doctorId) => {
         }
     })
 }
+
+let getProfileDoctorService = (doctorId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let doctorProfile = await db.User.findOne({
+                where: {
+                    id: doctorId
+                },
+                raw: false,
+                attributes: ['firstName', 'lastName', 'positionId', 'phonenumber', 'image'],
+                include: [
+                    { model: db.Allcode, as: 'positionData', attributes: ['valueEn', 'valueVi'] },
+                    { model: db.Markdown, as: 'markdown' },
+                    {
+                        model: db.Doctor_Infor, as: 'doctorData', include: [
+                            { model: db.Allcode, as: 'priceData', attributes: ['valueEn', 'valueVi'] },
+                            { model: db.Allcode, as: 'paymentData', attributes: ['valueEn', 'valueVi'] },
+                            { model: db.Allcode, as: 'provinceData', attributes: ['valueEn', 'valueVi'] }
+                        ]
+                    }
+                ],
+
+            })
+            resolve(doctorProfile)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getALlDoctors: getALlDoctors,
@@ -275,5 +304,6 @@ module.exports = {
     getDetailInforDoctorService: getDetailInforDoctorService,
     bulkCreateScheduleService: bulkCreateScheduleService,
     getDoctorScheduleService: getDoctorScheduleService,
-    getDoctorInforService: getDoctorInforService
+    getDoctorInforService: getDoctorInforService,
+    getProfileDoctorService: getProfileDoctorService
 }
